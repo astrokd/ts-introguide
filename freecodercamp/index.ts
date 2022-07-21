@@ -259,3 +259,135 @@ class Programmer extends Person2 {
       this.programmingLanguages = pL;
     }
 }
+
+// Modules in TypeScript
+// TS supports file module modern importing and exporting
+// in the tsconfig.json set 
+// "target": "es2016",
+// "module": "es2015"
+// but for node project you'll want "module": "CommonJS" since node doesn't support modern importing/exporting
+
+//In HTML file change script import to module type
+// <script type="module" src="/public/script.js"></script>
+
+// you can now import and export files using ES6, import the JS file even in the TS file
+  import { sayHi } from './hello.js';
+  
+  sayHi(); // Hello there!
+
+// Interfaces in TypeScript
+// define how an object should look
+interface Person3 {
+    name: string;
+    age: number;
+  }
+  
+  function sayHi2(person: Person3) {
+    console.log(`Hi ${person.name}`);
+  }
+  
+  sayHi2({
+    name: 'John',
+    age: 48,
+  }); // Hi John
+
+// Or you can define an object type using a type alias
+type PersonTA = {
+    name: string;
+    age: number;
+  };
+  
+  function sayHiTA(person: PersonTA) {
+    console.log(`Hi ${person.name}`);
+  }
+  
+  sayHiTA({
+    name: 'John',
+    age: 48,
+  }); // Hi John
+
+// Or an object type coudld be defined anonymously
+function sayHiAn(person: {name: string; age: number}) {
+    console.log(`Hi ${person.name}`)
+}
+
+sayHiAn({
+    name: 'John',
+    age: 48
+,})
+
+// Interfaces are similar to type aliases, 
+// the distinction is that type aliases cannot be reopened to add new properties
+// vs an interface which is always extendable
+
+// Extending an interface
+interface AnimalIn {
+    name: string
+  }
+  
+  interface BearIn extends AnimalIn {
+    honey: boolean
+  }
+  
+  const bear: BearIn = {
+    name: "Winnie",
+    honey: true,
+  }
+
+// Extending a type via intersections
+type AnimalTA = {
+    name: string
+  }
+  
+  type BearTA = AnimalTA & {
+    honey: boolean
+  }
+  
+  const bearTA: BearTA = {
+    name: "Winnie",
+    honey: true,
+  }
+
+// Adding new fields to an existing interface
+interface AnimalAd {
+    name: string
+  }
+  
+  // Re-opening the Animal interface to add a new field
+  interface AnimalAd {
+    tail: boolean
+  }
+  
+  const dog: AnimalAd = {
+    name: "Bruce",
+    tail: true,
+  }
+
+  // a type cannot be changed after being created
+  type AnimalAd2 = {
+    name: string
+  }
+  
+//   type AnimalAd2 = {
+//     tail: boolean
+//   }
+  // ERROR: Duplicate identifier 'Animal'.
+
+// as a rule TypeScript docs recommend using interfaces to define objects
+
+// Interfaces can also define function signatures
+interface PersonFS {
+    name: string
+    age: number
+    speak(sentence: string): void
+  }
+  
+  const person1FS: PersonFS = {
+    name: "John",
+    age: 48,
+    speak: sentence => console.log(sentence),
+  }
+
+// Why use an interface over a class
+// One advantage is an interface is only used by TypeScript, no JS.  
+// So it won't get compiled and add bloat to your JS
