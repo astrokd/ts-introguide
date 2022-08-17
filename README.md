@@ -20,5 +20,7 @@ TypeScript Intro Guide
 4. [geeksforgeeks.org: TypeScript](https://www.geeksforgeeks.org/typescript/)
 
 ### directories and files
+
 * freecodercamp
-    - index.ts : link 2 walkthrough
+  * index.ts : link 2 walkthrough
+* README.md
