@@ -368,10 +368,12 @@ interface AnimalAd {
     name: string
   }
   
-//   type AnimalAd2 = {
-//     tail: boolean
-//   }
+/*
+  type AnimalAd2 = {
+     tail: boolean
+   }
   // ERROR: Duplicate identifier 'Animal'.
+**/
 
 // as a rule TypeScript docs recommend using interfaces to define objects
 
@@ -389,5 +391,36 @@ interface PersonFS {
   }
 
 // Why use an interface over a class
-// One advantage is an interface is only used by TypeScript, no JS.  
+// One advantage is an interface is only used by TypeScript, not JS.  
 // So it won't get compiled and add bloat to your JS
+// a class is an object factory whereas an interface is dolely for type checking
+
+// Interfaces with classes
+
+interface HasFormatter {
+  format(): string;
+}
+
+class PersonIC implements HasFormatter {
+  constructor(public username: string, protected password: string) {}
+
+  format() {
+    return this.username.toLocaleLowerCase();
+  }
+}
+
+// Must be objects that implement the HasFormatter interface
+let person1IC: HasFormatter;
+
+person1IC = new PersonIC('Danny', 'password123')
+
+console.log(person1IC.format())  // danny
+
+// array of objects that implement HasFormatter
+
+let peopleARR: HasFormatter[] = []
+peopleARR.push(person1IC)
+
+// Literal types in TypeScript
+
+
