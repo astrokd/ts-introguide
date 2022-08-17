@@ -1,7 +1,9 @@
 # ts-introguide
+
 TypeScript Intro Guide
 
-### links
+## links
+
 1. [github.com: TypeScript](https://github.com/Microsoft/TypeScript)
 [typescriptlang.org: The TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
 2. [freecodecamp.org: Learn TypeScript - The Ultimate Beginners Guide](https://www.freecodecamp.org/news/learn-typescript-beginners-guide/)
@@ -15,11 +17,10 @@ TypeScript Intro Guide
     8. TypeScript strict mode
     9. Bonus: TypeScript with React
     10. Useful resources & further reading
-
 3. [docs.microsoft.com](https://docs.microsoft.com/en-us/learn/modules/typescript-get-started/)
 4. [geeksforgeeks.org: TypeScript](https://www.geeksforgeeks.org/typescript/)
 
-### directories and files
+## directories and files
 
 * freecodercamp
   * index.ts : link 2 walkthrough
